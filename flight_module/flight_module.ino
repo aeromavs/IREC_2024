@@ -1,4 +1,16 @@
-// (c) Michael Schoeffler 2017, http://www.mschoeffler.de
+/*
+Problems to address:
+
+- raw data incoming, need to filter necessary information
+
+- need to build RF packet struct or packet string to be sent to the ground station
+
+Completed:
+
+- multiple I2C devices communicating correct values
+
+
+*/
 
 #include "Wire.h" // This library allows you to communicate with I2C devices.
 #include <Adafruit_MPL3115A2.h> // Altimeter library
