@@ -30,6 +30,7 @@ void setup() {
     Serial.println("Could not find sensor. Check wiring.");
     while(1);
   }
+  
 
 /* use to set sea level pressure for current location
    this is needed for accurate altitude measurement
@@ -41,10 +42,6 @@ void loop() {
   Wire.write(0x3B); // starting with register 0x3B (ACCEL_XOUT_H) [MPU-6000 and MPU-6050 Register Map and Descriptions Revision 4.2, p.40]
   Wire.endTransmission(false); // the parameter indicates that the Arduino will send a restart. As a result, the connection is kept active.
   Wire.requestFrom(MPU_ADDR, 7*2, true); // request a total of 7*2=14 registers
-  
-  float pressure = baro.getPressure();
-  float altitude = baro.getAltitude();
-  float temperature = baro.getTemperature();
 
   // "Wire.read()<<8 | Wire.read();" means two registers are read and stored in the same variable
   accelerometer_x = Wire.read()<<8 | Wire.read(); // reading registers: 0x3B (ACCEL_XOUT_H) and 0x3C (ACCEL_XOUT_L)
@@ -65,6 +62,11 @@ void loop() {
   Serial.print(" | gY = "); Serial.print(convert_int16_to_str(gyro_y));
   Serial.print(" | gZ = "); Serial.print(convert_int16_to_str(gyro_z));
   Serial.println();
+
+  float pressure = baro.getPressure();
+  float altitude = baro.getAltitude();
+  float temperature = baro.getTemperature();
+
   // Altimeter serial print out
   Serial.println("-----------------");
   Serial.print("pressure = "); Serial.print(pressure); Serial.println(" hPa");
@@ -73,5 +75,5 @@ void loop() {
 
   
   // delay
-  delay(1000);
+  delay(250);
 }
