@@ -1,0 +1,1 @@
+need to possibly look into building a task manager inside the arduino chip that could search as a coroutine for all the sensory input and constructing struct and sending it out

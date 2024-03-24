@@ -9,7 +9,6 @@ Completed:
 
 - multiple I2C devices communicating correct values
 
-
 */
 
 #include "Wire.h" // This library allows you to communicate with I2C devices.
